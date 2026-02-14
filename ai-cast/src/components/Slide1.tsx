@@ -24,9 +24,9 @@ export function Slide1() {
             自動生成。
           </h1>
           <div className="text-[22px] leading-[1.7] text-[var(--color-w5)]">
-            興味に合わせてオーダーメイドで、
+            X連携するだけ、
             <br />
-            Podcastにしてお届け。
+            AIがあなた専用のPodcastを作成。
           </div>
         </div>
         <div className="flex flex-1 justify-center gap-10">
