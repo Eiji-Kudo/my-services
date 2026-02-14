@@ -312,22 +312,49 @@
   }
   #slide1 .steps {
     display: flex;
-    gap: 14px;
+    align-items: flex-start;
     margin-bottom: 28px;
   }
   #slide1 .step {
     flex: 1;
-    background: var(--card);
-    border: 1px solid var(--card-b);
-    border-radius: 14px;
-    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px;
+  }
+  #slide1 .step-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: rgba(191, 90, 242, 0.08);
+    border: 1px solid rgba(191, 90, 242, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  #slide1 .step-icon::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 24px;
+    background: radial-gradient(circle, rgba(191, 90, 242, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #slide1 .step-icon svg {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    z-index: 1;
   }
   #slide1 .step-num {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
     color: var(--purple);
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
   }
   #slide1 .step-title {
     font-size: 20px;
@@ -337,9 +364,18 @@
     margin-bottom: 6px;
   }
   #slide1 .step-desc {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--w5);
     line-height: 1.6;
+  }
+  #slide1 .step-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 28px;
+    flex-shrink: 0;
+  }
+  #slide1 .step-arrow svg {
+    display: block;
   }
   #slide1 .bottom-row {
     display: flex;
@@ -459,19 +495,53 @@
   </div>
   <div class="steps">
     <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="3"/>
+          <path d="M12 8v4"/>
+          <path d="M8 14h8"/>
+          <path d="M6 14v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3"/>
+          <path d="M9 22v-3"/>
+          <path d="M15 22v-3"/>
+        </svg>
+      </div>
       <div class="step-num">STEP 01</div>
       <div class="step-title">興味を取り込む</div>
-      <div class="step-desc">X連携（フォロー/いいね/リスト）or トピック手入力</div>
+      <div class="step-desc">X連携（フォロー/いいね/リスト）<br>or トピック手入力</div>
+    </div>
+    <div class="step-arrow">
+      <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+        <line x1="0" y1="12" x2="38" y2="12" stroke="var(--w15)" stroke-width="2" stroke-dasharray="4 4"/>
+        <path d="M36 6l8 6-8 6" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
     </div>
     <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+      </div>
       <div class="step-num">STEP 02</div>
       <div class="step-title">情報を集めて編集</div>
-      <div class="step-desc">重要度付け / ノイズ除去 / 要点→背景→論点→次アクション</div>
+      <div class="step-desc">重要度付け / ノイズ除去<br>要点→背景→論点→次アクション</div>
+    </div>
+    <div class="step-arrow">
+      <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+        <line x1="0" y1="12" x2="38" y2="12" stroke="var(--w15)" stroke-width="2" stroke-dasharray="4 4"/>
+        <path d="M36 6l8 6-8 6" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
     </div>
     <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+          <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+        </svg>
+      </div>
       <div class="step-num">STEP 03</div>
       <div class="step-title">短尺で届く</div>
-      <div class="step-desc">3〜7分 / 毎日 or 毎週 / 途中から聴いても分かる構成</div>
+      <div class="step-desc">3〜7分 / 毎日 or 毎週<br>途中から聴いても分かる構成</div>
     </div>
   </div>
   <div class="bottom-row">
