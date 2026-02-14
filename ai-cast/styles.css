@@ -173,6 +173,37 @@
     color: var(--w3);
     margin-top: 1px;
   }
+  .xi-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--w15);
+    flex-shrink: 0;
+  }
+  .xi-dot.done {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+  .xi-dot.spinning {
+    border-color: transparent;
+    border-top-color: var(--purple);
+    border-right-color: var(--purple);
+    animation: xi-spin 1s linear infinite;
+  }
+  @keyframes xi-spin {
+    to { transform: rotate(360deg); }
+  }
+  .xi-dur {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--w5);
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .xi-dur.gen {
+    color: var(--purple);
+    font-weight: 500;
+  }
   .xi-footer {
     margin-top: auto;
     padding-top: 12px;
@@ -180,23 +211,14 @@
     flex-direction: column;
     gap: 8px;
   }
-  .xi-count {
+  .xi-progress {
     font-size: 10px;
     color: var(--w5);
     text-align: center;
   }
-  .xi-count strong {
+  .xi-progress strong {
     color: var(--purple);
     font-weight: 700;
-  }
-  .xi-btn {
-    padding: 10px;
-    background: var(--purple);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: #fff;
   }
 
   /* Now Playing screen */
