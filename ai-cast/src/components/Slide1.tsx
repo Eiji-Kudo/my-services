@@ -95,8 +95,15 @@ export function Slide1() {
         <span className="grad">Podcast</span>
         を自動生成。
       </h1>
-      <p className="mb-10 text-center text-[28px] font-medium leading-[1.5] tracking-[-0.01em] text-[var(--color-w5)]">
-        あなたの知識とレベルに合った、興味に基づくエピソードをAIが毎日作成。
+      <p className="mb-10 text-center text-[34px] leading-[1.7] tracking-[-0.01em] text-[var(--color-w5)]">
+        あなたの
+        <span className="keyword font-semibold text-[var(--color-w1)]">興味</span>
+        と
+        <span className="keyword font-semibold text-[var(--color-w1)]">知識レベル</span>
+        に合わせて
+        <br />
+        <span className="grad font-semibold">AI</span>
+        が毎日、専用エピソードを届ける。
       </p>
 
       <div className="mb-10 flex items-start justify-center gap-5">
