@@ -19,7 +19,7 @@ export function Slide1() {
           <h1 className="mb-5 text-[56px] font-bold leading-[1.35] tracking-[-0.03em] text-[var(--color-w1)]">
             あなた専用の
             <br />
-            <span className="grad">&ldquo;Podcast&rdquo;</span>を
+            <span className="grad">Podcast</span>を
             <br />
             自動生成。
           </h1>
@@ -29,7 +29,7 @@ export function Slide1() {
             5分に編集して届ける。
           </div>
         </div>
-        <div className="flex shrink-0 gap-6">
+        <div className="flex flex-1 justify-center gap-6">
           <IPhone>
             <XImportScreen />
           </IPhone>
