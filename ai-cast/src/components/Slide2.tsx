@@ -1,76 +1,145 @@
 import { Brand } from "./Brand"
+import { IPhone } from "./IPhone"
 import { SlideIndex } from "./SlideIndex"
 
-const examples = [
-  {
-    label: "Example A",
-    title: "Claude Code アップデート解説（今週版）",
-    items: [
-      "何が変わった？（要点3つ）",
-      "何が嬉しい？（開発フローへの効き）",
-      "すぐ試す手順（最短）",
-      "つまずき所（注意点）",
-    ],
-  },
-  {
-    label: "Example B",
-    title: 'ChatGPT / Claude / Gemini "Skills"使い分け',
-    items: [
-      "何が得意？（タスク別）",
-      "失敗パターン（よくある罠）",
-      "使えるプロンプト型（テンプレ）",
-      "チーム導入のコツ",
-    ],
-  },
-  {
-    label: "Example C",
-    title: "インフラ新機能まとめ（AWS/GCP/Cloudflare）",
-    items: [
-      "重要アップデートだけ抽出",
-      "影響（コスト/安定性/運用）",
-      "使うべき条件・使わない条件",
-      "次に追うべきリンク",
-    ],
-  },
-  {
-    label: "Example D",
-    title: "Big Tech 求人ブリーフィング（職種別）",
-    items: [
-      "今出てるロールの傾向",
-      "求められるスキルセット",
-      "書類で刺さる実績の書き方",
-      "面接で見られるポイント（想定）",
-    ],
-  },
-]
-
-function ExampleCard({
-  label,
-  title,
-  items,
-}: {
-  label: string
-  title: string
-  items: string[]
-}) {
+function WireBar({ w = "100%", h = 8 }: { w?: string; h?: number }) {
   return (
-    <div className="rounded-[12px] border border-[var(--color-card-b)] bg-[var(--color-card)] px-4 py-[18px]">
-      <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--color-purple)]">
-        {label}
-      </div>
-      <div className="mb-[10px] text-[15px] font-bold leading-[1.4] text-[var(--color-w1)]">
-        {title}
-      </div>
-      <ul className="ex-items list-none">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="relative py-[2px] pl-[11px] text-[12px] leading-[1.5] text-[var(--color-w5)]"
-          >
-            {item}
-          </li>
+    <div
+      className="rounded-[4px] bg-[var(--color-w15)]"
+      style={{ width: w, height: h }}
+    />
+  )
+}
+
+function WireRect({ h = 40, className = "" }: { h?: number; className?: string }) {
+  return (
+    <div
+      className={`w-full rounded-[8px] border border-dashed border-[var(--color-w15)] ${className}`}
+      style={{ height: h }}
+    />
+  )
+}
+
+function ScreenLabel({ text }: { text: string }) {
+  return (
+    <div className="mt-4 text-center text-[13px] font-semibold text-[var(--color-w5)]">
+      {text}
+    </div>
+  )
+}
+
+function WireXImport() {
+  return (
+    <div className="flex flex-1 flex-col px-4 py-4">
+      <WireBar w="60%" h={12} />
+      <div className="mt-4 rounded-[10px] border border-dashed border-[var(--color-w15)] p-3">
+        <div className="mb-2 flex items-center gap-2">
+          <div className="h-3 w-3 rounded-full bg-[var(--color-w15)]" />
+          <WireBar w="40%" h={6} />
+        </div>
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="mb-[6px] flex items-start gap-2">
+            <div className="mt-[2px] h-[14px] w-[14px] shrink-0 rounded-full bg-[var(--color-w15)]" />
+            <div className="flex-1">
+              <WireBar w="35%" h={5} />
+              <div className="mt-1">
+                <WireBar w="90%" h={5} />
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+
+      <div className="my-3 flex items-center gap-2">
+        <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
+        <span className="text-[8px] text-[var(--color-purple)]">▼ AI が分析</span>
+        <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
+      </div>
+
+      {[1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="mb-2 rounded-[12px] border border-dashed border-[var(--color-purple-22)] bg-[var(--color-purple-6)] px-3 py-[10px]"
+        >
+          <WireBar w={`${75 - i * 10}%`} h={7} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function WireEpisodeList() {
+  return (
+    <div className="flex flex-1 flex-col px-4 py-4">
+      <WireBar w="50%" h={12} />
+      <div className="mt-1">
+        <WireBar w="30%" h={6} />
+      </div>
+
+      <div className="mt-4 flex flex-col gap-[10px]">
+        {[1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className="flex items-center gap-3 rounded-[10px] border border-dashed border-[var(--color-w15)] p-[10px]"
+          >
+            <div className="h-[40px] w-[40px] shrink-0 rounded-[8px] bg-[var(--color-w15)]" />
+            <div className="flex-1">
+              <WireBar w="80%" h={7} />
+              <div className="mt-[6px]">
+                <WireBar w="50%" h={5} />
+              </div>
+            </div>
+            <div className="h-[20px] w-[20px] shrink-0 rounded-full border border-dashed border-[var(--color-w15)]" />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-auto">
+        <WireRect h={44} className="flex items-center justify-center" />
+      </div>
+    </div>
+  )
+}
+
+function WireNowPlaying() {
+  return (
+    <div className="flex flex-1 flex-col px-5 py-4">
+      <div className="mb-3 flex justify-center">
+        <WireBar w="30%" h={6} />
+      </div>
+
+      <div className="mb-3 flex aspect-square w-full items-center justify-center rounded-[14px] border border-dashed border-[var(--color-w15)] bg-[var(--color-purple-6)]">
+        <div className="flex flex-col items-center gap-2">
+          <WireBar w="60px" h={10} />
+          <WireBar w="40px" h={6} />
+        </div>
+      </div>
+
+      <div className="mb-1 flex justify-center">
+        <WireBar w="70%" h={10} />
+      </div>
+      <div className="mb-3 flex justify-center">
+        <WireBar w="45%" h={6} />
+      </div>
+
+      <div className="mb-[5px] h-1 w-full rounded-[2px] bg-[var(--color-w15)]">
+        <div className="h-full w-[35%] rounded-[2px] bg-[var(--color-w3)]" />
+      </div>
+      <div className="mb-3 flex justify-between">
+        <WireBar w="20px" h={5} />
+        <WireBar w="20px" h={5} />
+      </div>
+
+      <div className="mb-3 flex items-center justify-center gap-7">
+        <div className="h-4 w-5 rounded-[2px] bg-[var(--color-w15)]" />
+        <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border-2 border-dashed border-[var(--color-w3)]" />
+        <div className="h-4 w-5 rounded-[2px] bg-[var(--color-w15)]" />
+      </div>
+
+      <div className="mt-auto flex flex-col gap-[5px]">
+        <WireRect h={30} />
+        <WireRect h={30} />
+      </div>
     </div>
   )
 }
@@ -79,33 +148,37 @@ export function Slide2() {
   return (
     <section
       id="slide2"
-      className="relative flex h-[var(--height-slide)] w-[var(--width-slide)] shrink-0 flex-col justify-center overflow-hidden bg-[var(--color-bg)] p-[var(--spacing-pad)]"
+      className="relative flex h-[var(--height-slide)] w-[var(--width-slide)] shrink-0 flex-col items-center justify-center overflow-hidden bg-[var(--color-bg)] p-[var(--spacing-pad)]"
     >
-      <div className="mb-5">
+      <div className="absolute left-[var(--spacing-pad)] top-[var(--spacing-pad)]">
         <Brand />
       </div>
-      <div className="flex items-center gap-12">
-        <div className="flex-1">
-          <h2 className="mb-6 text-[40px] font-bold tracking-[-0.02em] text-[var(--color-w1)]">
-            こんな回が
-            <br />
-            &ldquo;あなた向け&rdquo;に作られる
-          </h2>
-          <div className="grid grid-cols-2 gap-3">
-            {examples.map((ex) => (
-              <ExampleCard
-                key={ex.label}
-                label={ex.label}
-                title={ex.title}
-                items={ex.items}
-              />
-            ))}
-          </div>
-          <div className="mt-5 text-[13px] text-[var(--color-w3)]">
-            &ldquo;あなたの興味×あなたのレベル&rdquo;で編集する想定　／　※プロトタイプ検証中
-          </div>
+
+      <h2 className="mb-10 text-center text-[40px] font-bold tracking-[-0.02em] text-[var(--color-w1)]">
+        想定画面
+      </h2>
+
+      <div className="flex items-start gap-10">
+        <div>
+          <IPhone>
+            <WireXImport />
+          </IPhone>
+          <ScreenLabel text="興味を取り込む" />
+        </div>
+        <div>
+          <IPhone>
+            <WireEpisodeList />
+          </IPhone>
+          <ScreenLabel text="エピソード一覧" />
+        </div>
+        <div>
+          <IPhone>
+            <WireNowPlaying />
+          </IPhone>
+          <ScreenLabel text="再生画面" />
         </div>
       </div>
+
       <SlideIndex current={2} total={2} />
     </section>
   )

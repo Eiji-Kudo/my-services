@@ -45,8 +45,8 @@ body {
 
 .brand::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background: var(--color-purple);
   border-radius: 50%;
 }
