@@ -288,6 +288,102 @@
     margin-left: 2px;
   }
 
+  /* ─── X Import Screen ─── */
+  .xi { padding: 16px 16px; flex: 1; display: flex; flex-direction: column; }
+  .xi-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .xi-x {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--w1);
+  }
+  .xi-badge {
+    padding: 2px 8px;
+    background: rgba(191, 90, 242, 0.15);
+    border-radius: 980px;
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.04em;
+  }
+  .xi-sub {
+    font-size: 9px;
+    color: var(--w3);
+    margin-bottom: 14px;
+  }
+  .xi-list { display: flex; flex-direction: column; flex: 1; }
+  .xi-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--w15);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .xi-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--w15);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .xi-check.on {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+  .xi-check.on::after {
+    content: "";
+    width: 5px;
+    height: 8px;
+    border-right: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(45deg);
+    margin-top: -2px;
+  }
+  .xi-info { flex: 1; min-width: 0; }
+  .xi-topic {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--w1);
+    line-height: 1.3;
+  }
+  .xi-handle {
+    font-size: 9px;
+    color: var(--w3);
+    margin-top: 1px;
+  }
+  .xi-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .xi-count {
+    font-size: 10px;
+    color: var(--w5);
+    text-align: center;
+  }
+  .xi-count strong {
+    color: var(--purple);
+    font-weight: 700;
+  }
+  .xi-btn {
+    padding: 10px;
+    background: var(--purple);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+  }
+
   /* ━━ Slide 1: Hook + How ━━ */
   #slide1 .brand { margin-bottom: 28px; }
   #slide1 .s1-main {
@@ -372,6 +468,45 @@
     font-size: 13px;
     color: var(--w5);
     line-height: 1.6;
+  }
+  #slide1 .step-vis {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  #slide1 .step-chip {
+    padding: 3px 10px;
+    border-radius: 980px;
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(191, 90, 242, 0.06);
+    border: 1px solid rgba(191, 90, 242, 0.15);
+    color: rgba(191, 90, 242, 0.7);
+  }
+  #slide1 .step-chip-hl {
+    background: rgba(191, 90, 242, 0.15);
+    border-color: rgba(191, 90, 242, 0.3);
+    color: var(--purple);
+    font-weight: 600;
+  }
+  #slide1 .step-vis-arrow {
+    font-size: 10px;
+    color: var(--w3);
+  }
+  #slide1 .waveform {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 28px;
+    margin-bottom: 12px;
+  }
+  #slide1 .waveform span {
+    width: 3px;
+    border-radius: 2px;
+    background: rgba(191, 90, 242, 0.4);
   }
   #slide1 .step-arrow {
     display: flex;
@@ -501,50 +636,52 @@
       <div class="iphone">
         <div class="iphone-screen">
           <div class="iphone-island"></div>
-          <div class="ep-screen">
-            <div class="ep-nav">← ライブラリ</div>
-            <div class="ep-show-title">aicast</div>
-            <div class="ep-show-sub">あなた向けに自動生成</div>
-            <div class="ep-list">
-              <div class="ep-item">
-                <div class="ep-dot"></div>
-                <div class="ep-info">
-                  <div class="ep-name">Claude Code アプデ解説（今週版）</div>
-                  <div class="ep-meta">5分 · 2月14日</div>
+          <div class="xi">
+            <div class="xi-top">
+              <span class="xi-x">𝕏</span>
+              <span class="xi-badge">連携中</span>
+            </div>
+            <div class="xi-sub">あなたの活動から興味を検出しました</div>
+            <div class="xi-list">
+              <div class="xi-item">
+                <div class="xi-check on"></div>
+                <div class="xi-info">
+                  <div class="xi-topic">Claude Code の Hooks 活用法</div>
+                  <div class="xi-handle">いいね 14件 · 今週</div>
                 </div>
-                <div class="ep-play-sm"></div>
               </div>
-              <div class="ep-item">
-                <div class="ep-dot"></div>
-                <div class="ep-info">
-                  <div class="ep-name">ChatGPT/Claude/Gemini 使い分け</div>
-                  <div class="ep-meta">6分 · 2月13日</div>
+              <div class="xi-item">
+                <div class="xi-check on"></div>
+                <div class="xi-info">
+                  <div class="xi-topic">Cloudflare Workers + Hono 構成</div>
+                  <div class="xi-handle">リポスト 3件 · ブクマ 8件</div>
                 </div>
-                <div class="ep-play-sm"></div>
               </div>
-              <div class="ep-item">
-                <div class="ep-dot"></div>
-                <div class="ep-info">
-                  <div class="ep-name">インフラ新機能まとめ</div>
-                  <div class="ep-meta">4分 · 2月12日</div>
+              <div class="xi-item">
+                <div class="xi-check on"></div>
+                <div class="xi-info">
+                  <div class="xi-topic">LLM エージェント設計パターン</div>
+                  <div class="xi-handle">いいね 9件 · リプライ 2件</div>
                 </div>
-                <div class="ep-play-sm"></div>
               </div>
-              <div class="ep-item">
-                <div class="ep-dot"></div>
-                <div class="ep-info">
-                  <div class="ep-name">Big Tech 求人ブリーフィング</div>
-                  <div class="ep-meta">7分 · 2月11日</div>
+              <div class="xi-item">
+                <div class="xi-check on"></div>
+                <div class="xi-info">
+                  <div class="xi-topic">Next.js vs Remix 比較論</div>
+                  <div class="xi-handle">ブクマ 5件 · 先週</div>
                 </div>
-                <div class="ep-play-sm"></div>
               </div>
-              <div class="ep-item">
-                <div class="ep-info">
-                  <div class="ep-name">Cloudflare Workers 実践ガイド</div>
-                  <div class="ep-meta">5分 · 2月10日</div>
+              <div class="xi-item">
+                <div class="xi-check"></div>
+                <div class="xi-info">
+                  <div class="xi-topic">スタートアップ資金調達の動向</div>
+                  <div class="xi-handle">いいね 3件 · 2週間前</div>
                 </div>
-                <div class="ep-play-sm"></div>
               </div>
+            </div>
+            <div class="xi-footer">
+              <div class="xi-count"><strong>4</strong> トピックを選択中</div>
+              <div class="xi-btn">この興味で始める</div>
             </div>
           </div>
           <div class="iphone-home"></div>
@@ -564,6 +701,11 @@
           <path d="M15 22v-3"/>
         </svg>
       </div>
+      <div class="step-vis">
+        <span class="step-chip">𝕏 Feed</span>
+        <span class="step-chip">Claude Code</span>
+        <span class="step-chip">Infra</span>
+      </div>
       <div class="step-num">STEP 01</div>
       <div class="step-title">興味を取り込む</div>
       <div class="step-desc">X連携（フォロー/いいね/リスト）<br>or トピック手入力</div>
@@ -579,6 +721,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
         </svg>
+      </div>
+      <div class="step-vis">
+        <span class="step-chip">15 ソース</span>
+        <span class="step-vis-arrow">&rarr;</span>
+        <span class="step-chip step-chip-hl">3 トピック</span>
       </div>
       <div class="step-num">STEP 02</div>
       <div class="step-title">情報を集めて編集</div>
@@ -597,6 +744,20 @@
           <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
           <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
         </svg>
+      </div>
+      <div class="waveform">
+        <span style="height:30%"></span>
+        <span style="height:55%"></span>
+        <span style="height:40%"></span>
+        <span style="height:75%"></span>
+        <span style="height:100%"></span>
+        <span style="height:60%"></span>
+        <span style="height:35%"></span>
+        <span style="height:80%"></span>
+        <span style="height:50%"></span>
+        <span style="height:30%"></span>
+        <span style="height:65%"></span>
+        <span style="height:45%"></span>
       </div>
       <div class="step-num">STEP 03</div>
       <div class="step-title">短尺で届く</div>

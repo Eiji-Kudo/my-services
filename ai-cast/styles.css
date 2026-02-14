@@ -1,0 +1,496 @@
+  :root {
+    --w: 1350px;
+    --h: 1080px;
+    --pad: 64px;
+    --bg: #000;
+    --card: #1c1c1e;
+    --card-b: #2c2c2e;
+    --w1: #f5f5f7;
+    --w5: rgba(245,245,247,0.65);
+    --w3: rgba(245,245,247,0.4);
+    --w15: rgba(245,245,247,0.18);
+    --purple: #bf5af2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 48px 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  section {
+    width: var(--w);
+    height: var(--h);
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: var(--pad);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--w5);
+  }
+  .brand::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--purple);
+    border-radius: 50%;
+  }
+  .slide-idx {
+    position: absolute;
+    bottom: var(--pad);
+    right: var(--pad);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--w15);
+    letter-spacing: 0.1em;
+  }
+  .grad {
+    background: linear-gradient(90deg, #bf5af2, #ff375f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── iPhone Frame ─── */
+  .iphone {
+    width: 280px;
+    height: 572px;
+    background: #1a1a1a;
+    border-radius: 48px;
+    border: 4px solid #333;
+    padding: 14px;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 0 1px #000, 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .iphone-screen {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    border-radius: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .iphone-island {
+    width: 80px;
+    height: 22px;
+    background: #1a1a1a;
+    border-radius: 11px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+  .iphone-home {
+    width: 100px;
+    height: 4px;
+    background: #555;
+    border-radius: 2px;
+    margin: 8px auto 10px;
+    flex-shrink: 0;
+  }
+
+  /* Now Playing screen */
+  .np { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; }
+  .np-header {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--w3);
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .np-art {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2d1b69 0%, #7c3aed 40%, #c026d3 70%, #e11d9b 100%);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .np-art-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .np-art-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.6);
+  }
+  .np-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--w1);
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .np-artist {
+    font-size: 11px;
+    color: var(--purple);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .np-bar-wrap { margin-bottom: 6px; }
+  .np-bar {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .np-bar-fill {
+    width: 35%;
+    height: 100%;
+    background: var(--w1);
+    border-radius: 2px;
+  }
+  .np-times {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--w3);
+    margin-bottom: 12px;
+  }
+  .np-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .np-btn-sm {
+    width: 20px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .np-btn-sm::before, .np-btn-sm::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  .np-prev::before { border-width: 7px 10px 7px 0; border-color: transparent var(--w5) transparent transparent; }
+  .np-prev::after { border-width: 7px 10px 7px 0; border-color: transparent var(--w5) transparent transparent; margin-left: -3px; }
+  .np-next::before { border-width: 7px 0 7px 10px; border-color: transparent transparent transparent var(--w5); }
+  .np-next::after { border-width: 7px 0 7px 10px; border-color: transparent transparent transparent var(--w5); margin-left: -3px; }
+  .np-play {
+    width: 44px;
+    height: 44px;
+    background: var(--w1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .np-play::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent #000;
+    margin-left: 3px;
+  }
+
+  /* Episode list screen */
+  .ep-screen { padding: 16px 16px; flex: 1; display: flex; flex-direction: column; }
+  .ep-nav {
+    font-size: 10px;
+    color: var(--purple);
+    margin-bottom: 10px;
+  }
+  .ep-show-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--w1);
+    margin-bottom: 4px;
+  }
+  .ep-show-sub {
+    font-size: 9px;
+    color: var(--w3);
+    margin-bottom: 14px;
+  }
+  .ep-list { display: flex; flex-direction: column; gap: 0; flex: 1; }
+  .ep-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--w15);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .ep-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--purple);
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .ep-info { flex: 1; }
+  .ep-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--w1);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .ep-meta {
+    font-size: 9px;
+    color: var(--w3);
+  }
+  .ep-play-sm {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--w3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ep-play-sm::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 7px;
+    border-color: transparent transparent transparent var(--w3);
+    margin-left: 2px;
+  }
+
+  /* ━━ Slide 1: Hook + How ━━ */
+  #slide1 .brand { margin-bottom: 28px; }
+  #slide1 .s1-main {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 36px;
+  }
+  #slide1 .s1-phones {
+    display: flex;
+    gap: 24px;
+    flex-shrink: 0;
+  }
+  #slide1 .s1-text { flex: 1; }
+  #slide1 h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--w1);
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  #slide1 .sub {
+    font-size: 22px;
+    color: var(--w5);
+    line-height: 1.7;
+  }
+  #slide1 .steps {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  #slide1 .step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px;
+  }
+  #slide1 .step-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: rgba(191, 90, 242, 0.08);
+    border: 1px solid rgba(191, 90, 242, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  #slide1 .step-icon::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 24px;
+    background: radial-gradient(circle, rgba(191, 90, 242, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #slide1 .step-icon svg {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    z-index: 1;
+  }
+  #slide1 .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--purple);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  #slide1 .step-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--w1);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  #slide1 .step-desc {
+    font-size: 13px;
+    color: var(--w5);
+    line-height: 1.6;
+  }
+  #slide1 .step-vis {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  #slide1 .step-chip {
+    padding: 3px 10px;
+    border-radius: 980px;
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(191, 90, 242, 0.06);
+    border: 1px solid rgba(191, 90, 242, 0.15);
+    color: rgba(191, 90, 242, 0.7);
+  }
+  #slide1 .step-chip-hl {
+    background: rgba(191, 90, 242, 0.15);
+    border-color: rgba(191, 90, 242, 0.3);
+    color: var(--purple);
+    font-weight: 600;
+  }
+  #slide1 .step-vis-arrow {
+    font-size: 10px;
+    color: var(--w3);
+  }
+  #slide1 .waveform {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 28px;
+    margin-bottom: 12px;
+  }
+  #slide1 .waveform span {
+    width: 3px;
+    border-radius: 2px;
+    background: rgba(191, 90, 242, 0.4);
+  }
+  #slide1 .step-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 28px;
+    flex-shrink: 0;
+  }
+  #slide1 .step-arrow svg {
+    display: block;
+  }
+  #slide1 .bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--w3);
+    font-size: 14px;
+  }
+  #slide1 .pill {
+    padding: 6px 14px;
+    border: 1px solid var(--w15);
+    border-radius: 980px;
+    font-size: 12px;
+    color: var(--w5);
+    white-space: nowrap;
+  }
+
+  /* ━━ Slide 2: Examples ━━ */
+  #slide2 .brand { margin-bottom: 20px; }
+  #slide2 .s2-main {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  #slide2 .s2-content { flex: 1; }
+  #slide2 h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--w1);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  #slide2 .examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  #slide2 .ex {
+    background: var(--card);
+    border: 1px solid var(--card-b);
+    border-radius: 12px;
+    padding: 18px 16px;
+  }
+  #slide2 .ex-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  #slide2 .ex-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--w1);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  #slide2 .ex-items { list-style: none; }
+  #slide2 .ex-items li {
+    font-size: 12px;
+    color: var(--w5);
+    line-height: 1.5;
+    padding: 2px 0 2px 11px;
+    position: relative;
+  }
+  #slide2 .ex-items li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 3px;
+    height: 3px;
+    background: var(--w3);
+    border-radius: 50%;
+  }
+  #slide2 .note {
+    font-size: 13px;
+    color: var(--w3);
+    margin-top: 20px;
+  }
