@@ -188,7 +188,8 @@
 
     .steps {
       display: flex;
-      gap: 14px;
+      align-items: stretch;
+      gap: 0;
       margin-top: 8px;
     }
 
@@ -197,8 +198,39 @@
       background: var(--card);
       border: 1px solid var(--card-b);
       border-radius: 14px;
-      padding: 22px 20px;
+      padding: 26px 22px 22px;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      flex-shrink: 0;
+    }
+
+    .step-arrow svg {
+      opacity: 0.25;
+    }
+
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(191, 90, 242, 0.10);
+      border: 1px solid rgba(191, 90, 242, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .step-icon svg {
+      width: 28px;
+      height: 28px;
     }
 
     .step-num {
@@ -400,16 +432,44 @@
         <h2 class="title">どう動く？</h2>
         <div class="steps">
           <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"/>
+                <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                <line x1="12" y1="19" x2="12" y2="22"/>
+              </svg>
+            </div>
             <div class="step-num">STEP 01</div>
             <div class="step-title">興味を取り込む</div>
             <div class="step-desc">X連携（フォロー/いいね/リスト） or トピック手入力</div>
           </div>
-          <div class="step">
-            <div class="step-num">STEP 02</div>
-            <div class="step-title">情報を集めて編集する</div>
-            <div class="step-desc">重要度付け / ノイズ除去 / 要点→背景→論点→次アクション</div>
+          <div class="step-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--w1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+            </svg>
           </div>
           <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+              </svg>
+            </div>
+            <div class="step-num">STEP 02</div>
+            <div class="step-title">情報を集めて編集</div>
+            <div class="step-desc">重要度付け / ノイズ除去 / 要点→背景→論点→次アクション</div>
+          </div>
+          <div class="step-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--w1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+            </svg>
+          </div>
+          <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+              </svg>
+            </div>
             <div class="step-num">STEP 03</div>
             <div class="step-title">短尺で届く</div>
             <div class="step-desc">3〜7分 / 毎日 or 毎週 / 途中から聴いても分かる構成</div>
