@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aicast</title>
+<style>
+  :root {
+    --w: 1350px;
+    --h: 1080px;
+    --pad: 64px;
+    --bg: #000;
+    --card: #1c1c1e;
+    --card-b: #2c2c2e;
+    --w1: #f5f5f7;
+    --w7: rgba(245,245,247,0.7);
+    --w5: rgba(245,245,247,0.65);
+    --w3: rgba(245,245,247,0.4);
+    --w15: rgba(245,245,247,0.18);
+    --purple: #bf5af2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 48px 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  section {
+    width: var(--w);
+    height: var(--h);
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: var(--pad);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--w5);
+  }
+  .brand::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--purple);
+    border-radius: 50%;
+  }
+  .slide-idx {
+    position: absolute;
+    bottom: var(--pad);
+    right: var(--pad);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--w15);
+    letter-spacing: 0.1em;
+  }
+  .grad {
+    background: linear-gradient(90deg, #bf5af2, #ff375f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ━━ Slide 1: Hook + How ━━ */
+  #slide1 .brand { margin-bottom: 32px; }
+  #slide1 h1 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--w1);
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  #slide1 .sub {
+    font-size: 24px;
+    color: var(--w5);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  #slide1 .steps {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  #slide1 .step {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--card-b);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+  #slide1 .step-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  #slide1 .step-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--w1);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  #slide1 .step-desc {
+    font-size: 15px;
+    color: var(--w5);
+    line-height: 1.6;
+  }
+  #slide1 .bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--w3);
+    font-size: 15px;
+  }
+  #slide1 .pill {
+    padding: 7px 16px;
+    border: 1px solid var(--w15);
+    border-radius: 980px;
+    font-size: 13px;
+    color: var(--w5);
+    white-space: nowrap;
+  }
+
+  /* ━━ Slide 2: Examples + CTA ━━ */
+  #slide2 .brand { margin-bottom: 24px; }
+  #slide2 h2 {
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--w1);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  #slide2 .examples {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  #slide2 .ex {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--card-b);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  #slide2 .ex-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  #slide2 .ex-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--w1);
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  #slide2 .ex-items {
+    list-style: none;
+  }
+  #slide2 .ex-items li {
+    font-size: 13px;
+    color: var(--w5);
+    line-height: 1.5;
+    padding: 2px 0 2px 12px;
+    position: relative;
+  }
+  #slide2 .ex-items li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 3px;
+    height: 3px;
+    background: var(--w3);
+    border-radius: 50%;
+  }
+  #slide2 .note {
+    font-size: 13px;
+    color: var(--w3);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+
+<section id="slide1">
+  <div class="brand">aicast</div>
+  <h1>あなた専用の<br><span class="grad">"学びPodcast"</span>を自動生成。</h1>
+  <div class="sub">興味に合わせてオーダーメイドで、5分に編集して届ける。</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">興味を取り込む</div>
+      <div class="step-desc">X連携（フォロー/いいね/リスト）or トピック手入力</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">情報を集めて編集</div>
+      <div class="step-desc">重要度付け / ノイズ除去 / 要点→背景→論点→次アクション</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">短尺で届く</div>
+      <div class="step-desc">3〜7分 / 毎日 or 毎週 / 途中から聴いても分かる構成</div>
+    </div>
+  </div>
+  <div class="bottom-row">
+    <span>寝る前 / 散歩 / 通勤で、読む代わりに追いつく。</span>
+    <span class="pill">レベル調整（初心者〜実務）</span>
+    <span class="pill">要点→背景→次アクション</span>
+  </div>
+  <span class="slide-idx">01 — 02</span>
+</section>
+
+<section id="slide2">
+  <div class="brand">aicast</div>
+  <h2>こんな回が"あなた向け"に作られる</h2>
+  <div class="examples">
+    <div class="ex">
+      <div class="ex-label">Example A</div>
+      <div class="ex-title">Claude Code アップデート解説（今週版）</div>
+      <ul class="ex-items">
+        <li>何が変わった？（要点3つ）</li>
+        <li>何が嬉しい？（開発フローへの効き）</li>
+        <li>すぐ試す手順（最短）</li>
+        <li>つまずき所（注意点）</li>
+      </ul>
+    </div>
+    <div class="ex">
+      <div class="ex-label">Example B</div>
+      <div class="ex-title">ChatGPT / Claude / Gemini "Skills"使い分け</div>
+      <ul class="ex-items">
+        <li>何が得意？（タスク別）</li>
+        <li>失敗パターン（よくある罠）</li>
+        <li>使えるプロンプト型（テンプレ）</li>
+        <li>チーム導入のコツ</li>
+      </ul>
+    </div>
+    <div class="ex">
+      <div class="ex-label">Example C</div>
+      <div class="ex-title">インフラ新機能まとめ（AWS/GCP/Cloudflare）</div>
+      <ul class="ex-items">
+        <li>重要アップデートだけ抽出</li>
+        <li>影響（コスト/安定性/運用）</li>
+        <li>使うべき条件・使わない条件</li>
+        <li>次に追うべきリンク</li>
+      </ul>
+    </div>
+    <div class="ex">
+      <div class="ex-label">Example D</div>
+      <div class="ex-title">Big Tech 求人ブリーフィング（職種別）</div>
+      <ul class="ex-items">
+        <li>今出てるロールの傾向</li>
+        <li>求められるスキルセット</li>
+        <li>書類で刺さる実績の書き方</li>
+        <li>面接で見られるポイント（想定）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">"あなたの興味×あなたのレベル"で編集する想定　／　※プロトタイプ検証中</div>
+  <span class="slide-idx">02 — 02</span>
+</section>
+
+<script>
+function updateDisplay() {
+  var hash = location.hash;
+  var slides = document.querySelectorAll('section');
+  if (hash && document.querySelector(hash)) {
+    slides.forEach(function(s) { s.style.display = 'none'; });
+    document.querySelector(hash).style.display = 'flex';
+    document.body.style.padding = '0';
+    document.body.style.gap = '0';
+  } else {
+    slides.forEach(function(s) { s.style.display = ''; });
+    document.body.style.padding = '';
+    document.body.style.gap = '';
+  }
+}
+window.addEventListener('hashchange', updateDisplay);
+updateDisplay();
+</script>
+</body>
+</html>
