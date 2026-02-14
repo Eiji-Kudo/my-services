@@ -1,52 +1,31 @@
-const items: {
-  topic: string
-  handle: string
-  status: "done" | "spinning" | "pending"
-  dur?: string
-}[] = [
-  {
-    topic: "Claude Code アプデ解説",
-    handle: "いいね 14件 · 今週",
-    status: "done",
-    dur: "5分",
-  },
-  {
-    topic: "Cloudflare Workers + Hono 構成",
-    handle: "リポスト 3件 · ブクマ 8件",
-    status: "done",
-    dur: "4分",
-  },
-  {
-    topic: "LLM エージェント設計パターン",
-    handle: "いいね 9件 · リプライ 2件",
-    status: "spinning",
-    dur: "生成中...",
-  },
-  {
-    topic: "Next.js vs Remix 比較論",
-    handle: "ブクマ 5件 · 先週",
-    status: "pending",
-  },
-  {
-    topic: "スタートアップ資金調達の動向",
-    handle: "いいね 3件 · 2週間前",
-    status: "pending",
-  },
+const topics = [
+  { text: "Claude Code skills 実運用ケーススタディ", handle: "@indygreg" },
+  { text: "AI時代のエンジニアリングマネジメント", handle: "@lethain" },
+  { text: "テックリードのためのデータパイプライン構築手法", handle: "@emilybache" },
 ]
 
-function Dot({ status }: { status: "done" | "spinning" | "pending" }) {
-  if (status === "done") {
-    return (
-      <div className="h-[18px] w-[18px] shrink-0 rounded-full border-[1.5px] border-[var(--color-purple)] bg-[var(--color-purple)]" />
-    )
-  }
-  if (status === "spinning") {
-    return (
-      <div className="xi-dot spinning h-[18px] w-[18px] shrink-0 rounded-full border-[1.5px]" />
-    )
-  }
+function Bubble({
+  text,
+  handle,
+  delay,
+}: {
+  text: string
+  handle: string
+  delay: number
+}) {
   return (
-    <div className="h-[18px] w-[18px] shrink-0 rounded-full border-[1.5px] border-[var(--color-w15)]" />
+    <div
+      className="xi-bubble relative rounded-[14px] border border-[rgba(191,90,242,0.22)] bg-[rgba(191,90,242,0.08)] px-[14px] py-[10px]"
+      style={{ animationDelay: `${delay}s` }}
+    >
+      <div className="text-[11px] font-semibold leading-[1.4] text-[var(--color-w1)]">
+        {text}
+      </div>
+      <div className="mt-[3px] text-[9px] font-medium text-[var(--color-purple)]">
+        {handle}
+      </div>
+      <div className="absolute -bottom-[6px] left-[18px] h-0 w-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-[rgba(191,90,242,0.22)]" />
+    </div>
   )
 }
 
@@ -60,42 +39,12 @@ export function XImportScreen() {
         </span>
       </div>
       <div className="mb-[14px] text-[9px] text-[var(--color-w3)]">
-        タイムラインから生成中...
+        タイムライン・お気に入りからトピックを抽出中...
       </div>
-      <div className="flex flex-1 flex-col">
-        {items.map((item) => (
-          <div
-            key={item.topic}
-            className="flex items-center gap-[10px] border-b border-[var(--color-w15)] py-[10px]"
-          >
-            <Dot status={item.status} />
-            <div className="min-w-0 flex-1">
-              <div className="text-[11px] font-semibold leading-[1.3] text-[var(--color-w1)]">
-                {item.topic}
-              </div>
-              <div className="mt-[1px] text-[9px] text-[var(--color-w3)]">
-                {item.handle}
-              </div>
-            </div>
-            {item.dur && (
-              <div
-                className={`shrink-0 self-center text-[10px] ${
-                  item.status === "spinning"
-                    ? "font-medium text-[var(--color-purple)]"
-                    : "font-semibold text-[var(--color-w5)]"
-                }`}
-              >
-                {item.dur}
-              </div>
-            )}
-          </div>
+      <div className="flex flex-1 flex-col gap-[14px]">
+        {topics.map((t, i) => (
+          <Bubble key={t.handle} text={t.text} handle={t.handle} delay={i * 0.3} />
         ))}
-      </div>
-      <div className="mt-auto flex flex-col gap-2 pt-3">
-        <div className="text-center text-[10px] text-[var(--color-w5)]">
-          <strong className="font-bold text-[var(--color-purple)]">2</strong> / 5
-          エピソード生成済み
-        </div>
       </div>
     </div>
   )

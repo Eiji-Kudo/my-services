@@ -19,7 +19,7 @@ export function Slide1() {
           <h1 className="mb-5 text-[56px] font-bold leading-[1.35] tracking-[-0.03em] text-[var(--color-w1)]">
             あなた専用の
             <br />
-            <span className="grad">&ldquo;学びPodcast&rdquo;</span>を
+            <span className="grad">&ldquo;Podcast&rdquo;</span>を
             <br />
             自動生成。
           </h1>

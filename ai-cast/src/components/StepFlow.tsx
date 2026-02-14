@@ -112,7 +112,7 @@ export function StepFlow() {
         icon={step3Icon}
         vis={<Step3Vis />}
         num="STEP 03"
-        title="短尺で届く"
+        title="Podcastで届く"
         desc={
           <>
             3〜7分 / 毎日 or 毎週
