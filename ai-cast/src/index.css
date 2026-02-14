@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #000;
+  --color-card: #1c1c1e;
+  --color-card-b: #2c2c2e;
+  --color-w1: #f5f5f7;
+  --color-w5: rgba(245, 245, 247, 0.65);
+  --color-w3: rgba(245, 245, 247, 0.4);
+  --color-w15: rgba(245, 245, 247, 0.18);
+  --color-purple: #bf5af2;
+  --color-purple-8: rgba(191, 90, 242, 0.08);
+  --color-purple-6: rgba(191, 90, 242, 0.06);
+  --color-purple-12: rgba(191, 90, 242, 0.12);
+  --color-purple-15: rgba(191, 90, 242, 0.15);
+  --color-purple-22: rgba(191, 90, 242, 0.22);
+  --color-purple-30: rgba(191, 90, 242, 0.3);
+  --color-purple-40: rgba(191, 90, 242, 0.4);
+  --color-purple-70: rgba(191, 90, 242, 0.7);
+
+  --spacing-pad: 64px;
+  --width-slide: 1350px;
+  --height-slide: 1080px;
+
+  --animate-xi-spin: xi-spin 1s linear infinite;
+}
+
+@keyframes xi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.brand::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--color-purple);
+  border-radius: 50%;
+}
+
+.grad {
+  background: linear-gradient(90deg, #bf5af2, #ff375f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.np-play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 16px;
+  border-color: transparent transparent transparent #000;
+  margin-left: 3px;
+}
+
+.np-btn-sm::before,
+.np-btn-sm::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.np-prev::before {
+  border-width: 7px 10px 7px 0;
+  border-color: transparent var(--color-w5) transparent transparent;
+}
+
+.np-prev::after {
+  border-width: 7px 10px 7px 0;
+  border-color: transparent var(--color-w5) transparent transparent;
+  margin-left: -3px;
+}
+
+.np-next::before {
+  border-width: 7px 0 7px 10px;
+  border-color: transparent transparent transparent var(--color-w5);
+}
+
+.np-next::after {
+  border-width: 7px 0 7px 10px;
+  border-color: transparent transparent transparent var(--color-w5);
+  margin-left: -3px;
+}
+
+.step-icon::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 24px;
+  background: radial-gradient(circle, rgba(191, 90, 242, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ex-items li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 3px;
+  height: 3px;
+  background: var(--color-w3);
+  border-radius: 50%;
+}
+
+.xi-dot.spinning {
+  border-color: transparent;
+  border-top-color: var(--color-purple);
+  border-right-color: var(--color-purple);
+  animation: xi-spin 1s linear infinite;
+}
+
+.xi-check.on::after {
+  content: "";
+  width: 5px;
+  height: 8px;
+  border-right: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.ep-play-sm::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 7px;
+  border-color: transparent transparent transparent var(--color-w3);
+  margin-left: 2px;
+}
