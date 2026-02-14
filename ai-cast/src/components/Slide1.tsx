@@ -90,21 +90,20 @@ export function Slide1() {
         <Brand />
       </div>
 
-      <h1 className="mb-4 text-center text-[52px] font-bold leading-[1.3] tracking-[-0.03em] text-[var(--color-w1)]">
+      <div className="mb-6 rounded-2xl border border-[var(--color-purple-40)] bg-[var(--color-purple-6)] px-10 py-5 text-center text-[30px] leading-[1.8] text-[var(--color-w1)]">
+        あなたの
+        <span className="grad font-semibold">興味</span>
+        と
+        <span className="grad font-semibold">知識レベル</span>
+        に合わせて、
+        <span className="grad font-semibold">AI</span>
+        が毎日届ける。
+      </div>
+      <h1 className="mb-10 text-center text-[52px] font-bold leading-[1.3] tracking-[-0.03em] text-[var(--color-w1)]">
         あなた専用の
         <span className="grad">Podcast</span>
         を自動生成。
       </h1>
-      <p className="mb-10 text-center text-[34px] leading-[1.7] tracking-[-0.01em] text-[var(--color-w5)]">
-        あなたの
-        <span className="keyword font-semibold text-[var(--color-w1)]">興味</span>
-        と
-        <span className="keyword font-semibold text-[var(--color-w1)]">知識レベル</span>
-        に合わせて
-        <br />
-        <span className="grad font-semibold">AI</span>
-        が毎日、専用エピソードを届ける。
-      </p>
 
       <div className="mb-10 flex items-start justify-center gap-5">
         <div className="flex flex-col items-center">
