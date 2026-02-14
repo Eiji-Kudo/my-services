@@ -189,46 +189,53 @@ function WireDiscover() {
   )
 }
 
-function WireTranscript() {
+const customExamples = [
+  { icon: "📊", text: "Zenn ランキング Top5 を要約して" },
+  { icon: "📰", text: "今週の HackerNews 注目記事まとめ" },
+  { icon: "🎯", text: "Next.js の最新リリースノート解説" },
+]
+
+function WireCustomRequest() {
   return (
     <div className="flex flex-1 flex-col px-4 py-4">
-      <div className="text-[13px] font-bold text-[var(--color-w1)]">要約・文字起こし</div>
+      <div className="text-[13px] font-bold text-[var(--color-w1)]">カスタム要望</div>
+      <div className="mt-[2px] text-[9px] text-[var(--color-w3)]">
+        聴きたいテーマをリクエスト
+      </div>
 
-      <div className="mt-3 rounded-[10px] border border-[var(--color-purple-22)] bg-[var(--color-purple-6)] p-3">
-        <div className="mb-[4px] text-[8px] font-semibold text-[var(--color-purple)]">
-          AI要約
-        </div>
-        <div className="text-[9px] leading-[1.5] text-[var(--color-w5)]">
-          Claude Code の最新アップデートでは、Plan モードの精度向上と MCP サーバー連携が強化。
-          開発フローへの影響と導入手順を解説。
+      <div className="mt-3 rounded-[10px] border border-[var(--color-card-b)] bg-[var(--color-card)] p-[10px]">
+        <div className="flex items-center gap-[6px]">
+          <div className="flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-[8px] bg-[var(--color-purple-12)]">
+            <span className="text-[12px]">✨</span>
+          </div>
+          <div className="min-w-0 flex-1 rounded-[6px] border border-[var(--color-w15)] bg-[var(--color-bg)] px-[8px] py-[6px]">
+            <span className="text-[8px] text-[var(--color-w3)]">何を聴きたい？</span>
+          </div>
         </div>
       </div>
 
       <div className="my-3 flex items-center gap-2">
         <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
-        <span className="text-[8px] text-[var(--color-w3)]">文字起こし</span>
+        <span className="text-[8px] text-[var(--color-w3)]">例えば…</span>
         <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
       </div>
 
-      <div className="flex flex-col gap-3">
-        <div>
-          <div className="mb-[2px] text-[7px] text-[var(--color-purple)]">00:00</div>
-          <div className="text-[9px] leading-[1.5] text-[var(--color-w5)]">
-            今週の Claude Code アップデート、大きく3つのポイントがあります。
+      <div className="flex flex-col gap-[8px]">
+        {customExamples.map((ex, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-[8px] rounded-[10px] border border-[var(--color-purple-22)] bg-[var(--color-purple-6)] px-[10px] py-[8px]"
+          >
+            <span className="text-[12px]">{ex.icon}</span>
+            <span className="text-[9px] font-medium leading-[1.4] text-[var(--color-w5)]">
+              {ex.text}
+            </span>
           </div>
-        </div>
-        <div>
-          <div className="mb-[2px] text-[7px] text-[var(--color-purple)]">00:32</div>
-          <div className="text-[9px] leading-[1.5] text-[var(--color-w5)]">
-            まず Plan モードですが、コンテキストの理解精度が上がっています。
-          </div>
-        </div>
-        <div>
-          <div className="mb-[2px] text-[7px] text-[var(--color-purple)]">01:15</div>
-          <div className="text-[9px] leading-[1.5] text-[var(--color-w5)]">
-            次に MCP サーバーとの連携が大幅に改善されまして…
-          </div>
-        </div>
+        ))}
+      </div>
+
+      <div className="mt-auto flex items-center justify-center rounded-[10px] border border-[var(--color-purple-40)] bg-[var(--color-purple-12)] py-[8px]">
+        <span className="text-[10px] font-semibold text-[var(--color-purple)]">リクエストを送信</span>
       </div>
     </div>
   )
@@ -271,9 +278,9 @@ export function Slide2() {
         </div>
         <div>
           <IPhone>
-            <WireTranscript />
+            <WireCustomRequest />
           </IPhone>
-          <ScreenLabel text="要約・文字起こし" />
+          <ScreenLabel text="カスタム要望" />
         </div>
       </div>
 

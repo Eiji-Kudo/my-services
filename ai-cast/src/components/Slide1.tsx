@@ -23,10 +23,18 @@ export function Slide1() {
             <br />
             自動生成。
           </h1>
-          <div className="text-[22px] leading-[1.7] text-[var(--color-w5)]">
-            X連携するだけ、
-            <br />
-            AIがあなた専用のPodcastを作成。
+          <div className="flex items-center gap-[10px]">
+            <span className="rounded-full border border-[rgba(191,90,242,0.3)] bg-[rgba(191,90,242,0.12)] px-[14px] py-[6px] text-[15px] font-semibold text-[var(--color-purple)]">
+              𝕏 連携
+            </span>
+            <span className="text-[16px] text-[var(--color-w15)]">→</span>
+            <span className="rounded-full border border-[rgba(191,90,242,0.2)] bg-[rgba(191,90,242,0.06)] px-[14px] py-[6px] text-[15px] font-medium text-[rgba(191,90,242,0.8)]">
+              AIが編集
+            </span>
+            <span className="text-[16px] text-[var(--color-w15)]">→</span>
+            <span className="rounded-full border border-[rgba(191,90,242,0.2)] bg-[rgba(191,90,242,0.06)] px-[14px] py-[6px] text-[15px] font-medium text-[rgba(191,90,242,0.8)]">
+              Podcastで届く
+            </span>
           </div>
         </div>
         <div className="flex flex-1 justify-center gap-10">
@@ -42,7 +50,7 @@ export function Slide1() {
         <StepFlow />
       </div>
       <div className="text-sm text-[var(--color-w3)]">
-        <span>いつものPodcastを、あなた専用にオーダーメイド。</span>
+        <span>セットアップは1分、あとは毎日届くのを聴くだけ。</span>
       </div>
     </section>
   )
