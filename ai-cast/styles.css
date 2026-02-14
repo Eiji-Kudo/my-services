@@ -104,6 +104,102 @@
     flex-shrink: 0;
   }
 
+  /* ─── X Import Screen ─── */
+  .xi { padding: 16px 16px; flex: 1; display: flex; flex-direction: column; }
+  .xi-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .xi-x {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--w1);
+  }
+  .xi-badge {
+    padding: 2px 8px;
+    background: rgba(191, 90, 242, 0.15);
+    border-radius: 980px;
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.04em;
+  }
+  .xi-sub {
+    font-size: 9px;
+    color: var(--w3);
+    margin-bottom: 14px;
+  }
+  .xi-list { display: flex; flex-direction: column; flex: 1; }
+  .xi-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--w15);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .xi-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--w15);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .xi-check.on {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+  .xi-check.on::after {
+    content: "";
+    width: 5px;
+    height: 8px;
+    border-right: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(45deg);
+    margin-top: -2px;
+  }
+  .xi-info { flex: 1; min-width: 0; }
+  .xi-topic {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--w1);
+    line-height: 1.3;
+  }
+  .xi-handle {
+    font-size: 9px;
+    color: var(--w3);
+    margin-top: 1px;
+  }
+  .xi-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .xi-count {
+    font-size: 10px;
+    color: var(--w5);
+    text-align: center;
+  }
+  .xi-count strong {
+    color: var(--purple);
+    font-weight: 700;
+  }
+  .xi-btn {
+    padding: 10px;
+    background: var(--purple);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+  }
+
   /* Now Playing screen */
   .np { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; }
   .np-header {
