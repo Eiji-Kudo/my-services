@@ -1,72 +1,77 @@
-const feeds = [
-  { name: "@techcrunch_jp", text: "Claude 4.5 Sonnet がリリース、コード生成精度が…" },
-  { name: "@because_and", text: "大規模言語モデルのファインチューニング実践ガイド" },
-  { name: "@aws_japan", text: "Amazon Bedrock に新モデル追加。エージェント機能が…" },
+const myPosts = [
+  {
+    text: "Claude Code の hooks 機能、CIに組み込んだら開発体験が全然変わった。自動レビューが捗る。",
+    time: "3h",
+    likes: 24,
+    rts: 5,
+  },
+  {
+    text: "Cloudflare Workers + Hono の組み合わせ最高すぎる。デプロイ速度が桁違い。",
+    time: "1d",
+    likes: 41,
+    rts: 12,
+  },
+  {
+    text: "React Server Components、プロダクションで使い始めたけどバンドルサイズ激減した。",
+    time: "2d",
+    likes: 18,
+    rts: 3,
+  },
 ]
-
-const topics = [
-  "Claude Code skills 実運用ケーススタディ",
-  "AI時代のエンジニアリングマネジメント",
-  "テックリードのためのデータパイプライン構築手法",
-]
-
-function FeedItem({ name, text }: { name: string; text: string }) {
-  return (
-    <div className="flex items-start gap-[8px]">
-      <div className="mt-[2px] h-[18px] w-[18px] shrink-0 rounded-full bg-[var(--color-card-b)]" />
-      <div className="min-w-0">
-        <div className="text-[8px] font-medium text-[var(--color-w3)]">{name}</div>
-        <div className="truncate text-[9px] leading-[1.4] text-[var(--color-w5)]">{text}</div>
-      </div>
-    </div>
-  )
-}
-
-function Bubble({ text, delay }: { text: string; delay: number }) {
-  return (
-    <div
-      className="xi-bubble relative rounded-[14px] border border-[rgba(191,90,242,0.22)] bg-[rgba(191,90,242,0.08)] px-[12px] py-[8px]"
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="text-[10px] font-semibold leading-[1.4] text-[var(--color-w1)]">
-        {text}
-      </div>
-      <div className="absolute -bottom-[6px] left-[18px] h-0 w-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-[rgba(191,90,242,0.22)]" />
-    </div>
-  )
-}
 
 export function XImportScreen() {
   return (
-    <div className="flex flex-1 flex-col px-4 py-4">
-      <div className="mb-[10px] text-[13px] font-bold text-[var(--color-w1)]">
-        𝕏連携して好みを抽出
-      </div>
+    <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="relative h-[52px] shrink-0" style={{ background: 'linear-gradient(135deg, #1a1040 0%, #2d1b69 100%)' }} />
 
-      <div className="mb-[10px] rounded-[10px] border border-[var(--color-card-b)] bg-[var(--color-card)] px-[10px] py-[8px]">
-        <div className="mb-[6px] flex items-center gap-[6px]">
-          <span className="text-[10px] font-bold text-[var(--color-w1)]">𝕏</span>
-          <span className="text-[7px] text-[var(--color-w3)]">タイムライン</span>
+      <div className="relative px-3 pb-2">
+        <div className="-mt-[22px] mb-[6px] h-[44px] w-[44px] rounded-full border-[3px] border-[var(--color-bg)] bg-[var(--color-purple-15)]" />
+        <div className="text-[11px] font-bold leading-none text-[var(--color-w1)]">
+          Eiji
         </div>
-        <div className="flex flex-col gap-[6px]">
-          {feeds.map((f) => (
-            <FeedItem key={f.name} name={f.name} text={f.text} />
-          ))}
+        <div className="mt-[1px] text-[8px] text-[var(--color-w3)]">
+          @eiji_dev
+        </div>
+        <div className="mt-[4px] text-[8px] leading-[1.4] text-[var(--color-w5)]">
+          Software Engineer / AI・インフラ・フロントエンド
+        </div>
+        <div className="mt-[4px] flex gap-[10px] text-[7px] text-[var(--color-w3)]">
+          <span><span className="font-bold text-[var(--color-w5)]">312</span> フォロー中</span>
+          <span><span className="font-bold text-[var(--color-w5)]">1,024</span> フォロワー</span>
         </div>
       </div>
 
-      <div className="mb-[10px] flex items-center justify-center gap-[4px]">
-        <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
-        <span className="text-[8px] text-[var(--color-purple)]">▼ AI が分析</span>
-        <div className="h-[1px] flex-1 bg-[var(--color-w15)]" />
+      <div className="border-b border-[var(--color-w15)]">
+        <div className="mx-3 border-b-2 border-[var(--color-purple)] pb-[6px] pt-[4px] text-center text-[9px] font-bold text-[var(--color-w1)]" style={{ width: 'fit-content' }}>
+          ポスト
+        </div>
       </div>
 
-      <div className="mb-[6px] text-[8px] font-medium text-[var(--color-w3)]">
-        抽出されたトピック
-      </div>
-      <div className="flex flex-col gap-[8px]">
-        {topics.map((t, i) => (
-          <Bubble key={i} text={t} delay={i * 0.3} />
+      <div className="flex flex-1 flex-col gap-[8px] overflow-hidden px-3 py-2">
+        {myPosts.map((p, i) => (
+          <div
+            key={i}
+            className="flex gap-[8px] border-b border-[var(--color-w15)] pb-[8px]"
+          >
+            <div className="mt-[2px] h-[20px] w-[20px] shrink-0 rounded-full bg-[var(--color-purple-15)]" />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-[4px]">
+                <span className="text-[8px] font-bold text-[var(--color-w1)]">
+                  Eiji
+                </span>
+                <span className="text-[7px] text-[var(--color-w3)]">
+                  @eiji_dev · {p.time}
+                </span>
+              </div>
+              <div className="mt-[2px] text-[8px] leading-[1.5] text-[var(--color-w5)]">
+                {p.text}
+              </div>
+              <div className="mt-[3px] flex items-center gap-[12px] text-[7px] text-[var(--color-w3)]">
+                <span>♡ {p.likes}</span>
+                <span>⇄ {p.rts}</span>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

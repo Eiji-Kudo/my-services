@@ -63,58 +63,6 @@ function WireSwipe() {
   )
 }
 
-const episodes = [
-  {
-    title: "Claude Code アプデ解説（今週版）",
-    meta: "5分 · 2026.02.14 生成",
-    summary: "Plan モードの精度向上、MCP連携強化、hooks機能の追加。開発フローが大きく変わる3つのポイント。",
-  },
-  {
-    title: "ChatGPT vs Gemini 使い分け",
-    meta: "7分 · 2026.02.13 生成",
-    summary: "タスク別の得意領域と失敗パターン。コード生成・要約・分析でどう使い分けるか。",
-  },
-]
-
-function WireEpisodeList() {
-  return (
-    <div className="flex flex-1 flex-col px-4 py-4">
-      <div className="text-[13px] font-bold text-[var(--color-w1)]">マイエピソード</div>
-      <div className="mt-[2px] text-[9px] text-[var(--color-w3)]">2件のエピソード</div>
-
-      <div className="mt-3 flex flex-col gap-[10px]">
-        {episodes.map((ep, i) => (
-          <div
-            key={i}
-            className="rounded-[10px] border border-[var(--color-card-b)] bg-[var(--color-card)] p-[10px]"
-          >
-            <div className="mb-[6px] flex items-center gap-[8px]">
-              <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[8px]" style={{ background: 'linear-gradient(135deg, #2d1b69 0%, #7c3aed 100%)' }}>
-                <span className="text-[8px] text-white">▶</span>
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="truncate text-[10px] font-bold leading-[1.3] text-[var(--color-w1)]">
-                  {ep.title}
-                </div>
-                <div className="mt-[2px] text-[8px] text-[var(--color-w3)]">{ep.meta}</div>
-              </div>
-            </div>
-            <div className="rounded-[6px] bg-[var(--color-purple-6)] px-[8px] py-[6px]">
-              <div className="text-[8px] leading-[1.5] text-[var(--color-w5)]">
-                {ep.summary}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-auto flex items-center justify-center rounded-[10px] border border-dashed border-[var(--color-purple-22)] py-[10px]">
-        <span className="text-[10px] text-[var(--color-purple)]">+ 新しいエピソードを生成</span>
-      </div>
-    </div>
-  )
-}
-
 const categories = ["AI Tooling", "Cloud Infra", "Frontend", "SRE", "Career"]
 
 const discoveryItems = [
@@ -263,12 +211,6 @@ export function Slide2() {
             <WireSwipe />
           </IPhone>
           <ScreenLabel text="好みをスワイプ" />
-        </div>
-        <div>
-          <IPhone>
-            <WireEpisodeList />
-          </IPhone>
-          <ScreenLabel text="エピソード一覧" />
         </div>
         <div>
           <IPhone>
