@@ -1,0 +1,7 @@
+output/*.wav
+output/*.png
+output/*.mp3
+!output/.gitkeep
+.env
+.venv/
+__pycache__/
