@@ -1,0 +1,19 @@
+{
+  "name": "podcast-gen",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "audio": "tsx main.ts audio",
+    "image": "tsx main.ts image"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "wav": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/wav": "^1.0.4",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

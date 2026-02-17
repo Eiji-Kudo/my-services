@@ -1,11 +1,7 @@
-from io import BytesIO
+import { writeFileSync } from "fs";
+import { client } from "./client.js";
 
-from google.genai import types
-from PIL import Image
-
-from src.client import get_client
-
-PROMPT = """
+const PROMPT = `
 テック系ポッドキャストのサムネイル画像を、おしゃれなデジタルイラスト風のスタイルで生成してください。写真やフォトリアルではなく、イラストレーションで。
 
 要件:
@@ -16,26 +12,28 @@ PROMPT = """
 - テキスト: 「Zennで話題のClaude Code Skills、結局どう使えばいいの？」
 - テキストは日本語で正確に、読みやすく配置
 - Xのロゴや「16:9」などのメタ情報は画像内に入れない
-"""
+`;
 
+export async function generateImage(
+  outputPath: string = "output/podcast_thumbnail.png",
+): Promise<void> {
+  const response = await client.models.generateContent({
+    model: "gemini-3-pro-image-preview",
+    contents: [{ role: "user", parts: [{ text: PROMPT }] }],
+    config: {
+      responseModalities: ["IMAGE"],
+      imageConfig: {
+        aspectRatio: "16:9",
+      },
+    },
+  });
 
-def generate_image(output_path: str = "output/podcast_thumbnail.png") -> None:
-    client = get_client()
-
-    response = client.models.generate_content(
-        model="gemini-3-pro-image-preview",
-        contents=PROMPT,
-        config=types.GenerateContentConfig(
-            response_modalities=["IMAGE"],
-            image_config=types.ImageConfig(
-                aspect_ratio="16:9",
-            ),
-        ),
-    )
-
-    for part in response.parts:
-        if part.inline_data is not None:
-            image = Image.open(BytesIO(part.inline_data.data))
-            image.save(output_path)
-            print(f"{output_path} を生成しました ({image.size[0]}x{image.size[1]})")
-            break
+  for (const part of response.candidates?.[0]?.content?.parts ?? []) {
+    if (part.inlineData) {
+      const buffer = Buffer.from(part.inlineData.data!, "base64");
+      writeFileSync(outputPath, buffer);
+      console.log(`${outputPath} を生成しました`);
+      break;
+    }
+  }
+}

@@ -3,5 +3,4 @@ output/*.png
 output/*.mp3
 !output/.gitkeep
 .env
-.venv/
-__pycache__/
+node_modules/
