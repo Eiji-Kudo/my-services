@@ -6,10 +6,15 @@ export async function generateAudio(
   scriptPath: string,
   outputPath: string = "output/podcast.wav",
 ): Promise<void> {
-  const script = readFileSync(scriptPath, "utf-8").trim();
+  const raw = readFileSync(scriptPath, "utf-8").trim();
+  const scriptMatch = raw.match(/## 台本\s*\n([\s\S]*?)(?:\n---|\n## |$)/);
+  const dialogue = (scriptMatch ? scriptMatch[1].trim() : raw).replaceAll("ゲスト:", "Guest:");
+  const stylePrompt = `Say the following conversation in a lively, expressive, and natural podcast style. MC is an enthusiastic and engaging host. Guest is a knowledgeable and passionate expert. Both speakers should sound warm, conversational, and emotionally expressive with natural rhythm and pacing.\n\n`;
+  const script = stylePrompt + dialogue;
 
   const response = await client.models.generateContent({
     model: "gemini-2.5-pro-preview-tts",
+    httpOptions: { timeout: 600_000 },
     contents: [{ role: "user", parts: [{ text: script }] }],
     config: {
       responseModalities: ["AUDIO"],
@@ -23,9 +28,9 @@ export async function generateAudio(
               },
             },
             {
-              speaker: "ゲスト",
+              speaker: "Guest",
               voiceConfig: {
-                prebuiltVoiceConfig: { voiceName: "Puck" },
+                prebuiltVoiceConfig: { voiceName: "Rasalgethi" },
               },
             },
           ],
