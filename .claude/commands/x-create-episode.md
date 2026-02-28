@@ -119,29 +119,26 @@ slugはトピックから英語のkebab-caseで生成する。
 ### 8. 音声生成
 
 ```bash
-cd ai-cast/podcast-gen && npx tsx main.ts audio content/{ファイル名}
+cd ai-cast/podcast-gen && npx tsx main.ts audio content/{ファイル名} output/{番号}-{slug}.wav
 ```
-
-生成先: `output/{ベース名}.wav`
 
 ### 9. サムネイル画像生成
 
 エピソードのタイトルを渡してサムネイルを生成する。
 
 ```bash
-cd ai-cast/podcast-gen && npx tsx main.ts image "{エピソードタイトル}"
+cd ai-cast/podcast-gen && npx tsx main.ts image "{エピソードタイトル}" output/{番号}-{slug}-thumbnail.png
 ```
-
-生成先: `output/podcast_thumbnail.png`
 
 ### 10. MP4動画生成（サムネイル + 音声 + 波形アニメーション）
 
 ffmpegでサムネイル画像を背景に、音声の波形アニメーションを重ねたMP4動画を生成する。
+ファイル名はステップ8・9でリネームしたものを使う。
 
 ```bash
 ffmpeg -y \
-  -i output/{ベース名}.wav \
-  -loop 1 -i output/podcast_thumbnail.png \
+  -i output/{番号}-{slug}.wav \
+  -loop 1 -i output/{番号}-{slug}-thumbnail.png \
   -filter_complex "
     [0:a]showwaves=s=1376x200:mode=cline:rate=25:colors=0x4A9EFF@0.8:scale=sqrt[waves];
     [1:v]scale=1376:768[bg];
@@ -151,7 +148,7 @@ ffmpeg -y \
   -c:v libx264 -preset medium -crf 23 \
   -c:a aac -b:a 192k \
   -shortest -pix_fmt yuv420p \
-  output/{ベース名}.mp4
+  output/{番号}-{slug}.mp4
 ```
 
 パラメータ説明:
@@ -175,6 +172,7 @@ ffmpeg -y \
 - ハッシュタグは0〜2個
 - 絵文字は控えめに
 - 動画を添付する前提で、末尾に「↓」等のリンク誘導は不要
+- 末尾に「あとで聴けるように右下から保存しておいてください！」を必ず含める
 
 2パターン提示し、ユーザーに選んでもらう。
 
@@ -215,7 +213,7 @@ CLAUDE.md肥大化問題やセキュリティリスクも含めて約5分で整�
 ユーザーの編集完了後、保存した告知テキストファイルを読み込み、ステップ10で生成したMP4動画と一緒にXに投稿する。
 
 ```bash
-cd ai-cast/podcast-gen && npx tsx main.ts post "$(cat content/{番号}-x-post.md)" output/{ベース名}.mp4
+cd ai-cast/podcast-gen && npx tsx main.ts post "$(cat content/{番号}-x-post.md)" output/{番号}-{slug}.mp4
 ```
 
 投稿完了後、ツイートのURLを表示する。

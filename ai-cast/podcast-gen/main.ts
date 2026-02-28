@@ -6,14 +6,16 @@ const command = process.argv[2];
 
 if (command === "audio") {
   const scriptPath = process.argv[3] ?? "content/episode_001.md";
-  await generateAudio(scriptPath);
+  const outputPath = process.argv[4] ?? "output/podcast.wav";
+  await generateAudio(scriptPath, outputPath);
 } else if (command === "image") {
   const title = process.argv[3];
   if (!title) {
-    console.log("Usage: tsx main.ts image <title>");
+    console.log("Usage: tsx main.ts image <title> [output-path]");
     process.exit(1);
   }
-  await generateImage(title);
+  const outputPath = process.argv[4] ?? "output/podcast_thumbnail.png";
+  await generateImage(title, outputPath);
 } else if (command === "post") {
   const text = process.argv[3];
   const videoPath = process.argv[4];
