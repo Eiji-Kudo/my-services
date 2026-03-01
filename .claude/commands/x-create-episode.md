@@ -203,7 +203,7 @@ CLAUDE.md肥大化問題やセキュリティリスクも含めて約5分で整�
 
 ### 12. 告知テキストの保存
 
-ユーザーが選んだパターンを `ai-cast/podcast-gen/content/{番号}-x-post.md` に保存する。
+ユーザーが選んだパターンを `ai-cast/podcast-gen/content/{番号}-{slug}-x-post.md` に保存する。
 ユーザーがテキストを加工・編集できるようにするため、**投稿前に必ずファイルに保存する**。
 
 ユーザーに「加工が必要なら編集してください。完了したら教えてください」と伝えて待つ。
@@ -213,7 +213,7 @@ CLAUDE.md肥大化問題やセキュリティリスクも含めて約5分で整�
 ユーザーの編集完了後、保存した告知テキストファイルを読み込み、ステップ10で生成したMP4動画と一緒にXに投稿する。
 
 ```bash
-cd ai-cast/podcast-gen && npx tsx main.ts post "$(cat content/{番号}-x-post.md)" output/{番号}-{slug}.mp4
+cd ai-cast/podcast-gen && npx tsx main.ts post "$(cat content/{番号}-{slug}-x-post.md)" output/{番号}-{slug}.mp4
 ```
 
 投稿完了後、ツイートのURLを表示する。
