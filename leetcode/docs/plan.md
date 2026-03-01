@@ -66,7 +66,7 @@ leetcode/
 
 **目標**: 配列の作り方・アクセス・操作を理解する
 
-- [ ] **1-1** 配列の作成とアクセス — `[]` で配列を作り、`array[0]` でインデックスアクセス (`array-create.js`)
+- [x] **1-1** 配列の作成とアクセス — `[]` で配列を作り、`array[0]` でインデックスアクセス (`array-create.js`)
 - [ ] **1-2** 配列の追加・削除 — `push`, `pop`, `unshift`, `shift` で末尾/先頭を操作 (`array-mutate.js`)
 - [ ] **1-3** for ループで配列を走査 — `for (let i = 0; i < arr.length; i++)` の基本形 (`array-for-loop.js`)
 - [ ] **1-4** for...of で配列を走査 — `for (const item of arr)` でシンプルに回す (`array-for-of.js`)
