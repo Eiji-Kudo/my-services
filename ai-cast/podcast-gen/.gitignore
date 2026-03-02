@@ -1,6 +1,7 @@
 output/*.wav
 output/*.png
 output/*.mp3
+output/*.mp4
 !output/.gitkeep
 .env
 node_modules/
