@@ -9,7 +9,7 @@ export async function generateAudio(
   const raw = readFileSync(scriptPath, "utf-8").trim();
   const scriptMatch = raw.match(/## 台本\s*\n([\s\S]*?)(?:\n---|\n## |$)/);
   const dialogue = (scriptMatch ? scriptMatch[1].trim() : raw).replaceAll("ゲスト:", "Guest:");
-  const stylePrompt = `Say the following conversation in a lively, expressive, and natural podcast style. MC is an enthusiastic and engaging host. Guest is a knowledgeable and passionate expert. Both speakers should sound warm, conversational, and emotionally expressive with natural rhythm and pacing.\n\n`;
+  const stylePrompt = `Say the following conversation in a natural podcast style at a moderate, unhurried pace. Take your time with each sentence. MC is a warm and engaging host. Guest is a knowledgeable expert who explains things clearly and deliberately. Both speakers should sound conversational and expressive, with natural pauses between thoughts and a relaxed rhythm. Do not rush.\n\n`;
   const script = stylePrompt + dialogue;
 
   const response = await client.models.generateContent({
